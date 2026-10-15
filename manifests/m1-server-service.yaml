@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: m1-server-service
+  namespace: k8s-foundations
+  labels:
+    app: m1-server
+spec:
+  selector:
+    app: m1-server
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

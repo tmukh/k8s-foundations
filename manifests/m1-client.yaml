@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: m1-client
+  namespace: k8s-foundations
+  labels:
+    app: m1-client
+spec:
+  containers:
+    - name: curl
+      image: curlimages/curl
+      command: ["sleep", "3600"]

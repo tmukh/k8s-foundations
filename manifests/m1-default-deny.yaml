@@ -1,0 +1,9 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  namespace: k8s-foundations
+  name: m1-default-deny-ingress
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress

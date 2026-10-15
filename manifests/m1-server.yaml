@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: m1-server-deployment
+  namespace: k8s-foundations
+  labels:
+    app: m1-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: m1-server
+  template:
+    metadata:
+      labels:
+        app: m1-server
+    spec:
+      containers:
+      - name: m1-server-container
+        image: nginx:1.27.4
+        ports:
+        - containerPort: 80
