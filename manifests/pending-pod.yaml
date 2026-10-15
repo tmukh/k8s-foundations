@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: pending-pod-deployment
+  namespace: k8s-foundations
+  labels:
+    testLabel: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      testLabel: test
+  template:
+    metadata:
+      labels:
+        testLabel: test
+    spec:
+      containers:
+      - name: k8s-foundation-container
+        image: nginx:1.27.4
+        ports:
+        - containerPort: 80
+        livenessProbe: 
+          httpGet:
+            path: /
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        resources:
+          limits:
+            memory: "128Gi"
+            cpu: "500m"
+          requests:
+            memory: "64Gi"
+            cpu: "250m"
